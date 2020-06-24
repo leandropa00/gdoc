@@ -30,7 +30,7 @@ class UserController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $users = $this->userRepository->all();
+        $users = $this->userRepository->all()->where('email', '<>', 'admin');
 
         return view('users.index')
             ->with('users', $users);
