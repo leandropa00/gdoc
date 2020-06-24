@@ -57,8 +57,8 @@ class UserController extends AppBaseController
     {
         $input = $request->all() + ['password' => Hash::make('12345678')];
         $user = $this->userRepository->create($input);
-        $user->cargos()->attach($request->cargo_id);
-        Flash::success('User saved successfully.');
+        $user->cargos()->sync($request['cargos']);
+        Flash::success('Usuario creado satisfactoriamente.');
 
         return redirect(route('users.index'));
     }
@@ -75,8 +75,7 @@ class UserController extends AppBaseController
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
-            Flash::error('User not found');
-
+            Flash::error('Usuario no encontrado');
             return redirect(route('users.index'));
         }
 
@@ -95,7 +94,7 @@ class UserController extends AppBaseController
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
-            Flash::error('User not found');
+            Flash::error('Usuario no encontrado');
 
             return redirect(route('users.index'));
         }
@@ -116,14 +115,15 @@ class UserController extends AppBaseController
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
-            Flash::error('User not found');
+            Flash::error('Usuario no encontrado');
 
             return redirect(route('users.index'));
         }
 
         $user = $this->userRepository->update($request->all(), $id);
+        $user->cargos()->sync($request['cargos']);
 
-        Flash::success('User updated successfully.');
+        Flash::success('Usuario actualizado satisfactoriamente.');
 
         return redirect(route('users.index'));
     }
@@ -142,14 +142,14 @@ class UserController extends AppBaseController
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
-            Flash::error('User not found');
+            Flash::error('Usuario no encontrado');
 
             return redirect(route('users.index'));
         }
 
         $this->userRepository->delete($id);
 
-        Flash::success('User deleted successfully.');
+        Flash::success('Usuario eliminado satisfactoriamente.');
 
         return redirect(route('users.index'));
     }

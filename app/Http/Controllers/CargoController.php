@@ -58,7 +58,7 @@ class CargoController extends AppBaseController
 
         $cargo = $this->cargoRepository->create($input);
 
-        Flash::success('Cargo saved successfully.');
+        Flash::success('Cargo creado satisfactoriamente.');
 
         return redirect(route('cargos.index'));
     }
@@ -75,7 +75,7 @@ class CargoController extends AppBaseController
         $cargo = $this->cargoRepository->find($id);
 
         if (empty($cargo)) {
-            Flash::error('Cargo not found');
+            Flash::error('Cargo no encontrado');
 
             return redirect(route('cargos.index'));
         }
@@ -116,14 +116,14 @@ class CargoController extends AppBaseController
         $cargo = $this->cargoRepository->find($id);
 
         if (empty($cargo)) {
-            Flash::error('Cargo not found');
+            Flash::error('Cargo no encontrado');
 
             return redirect(route('cargos.index'));
         }
 
         $cargo = $this->cargoRepository->update($request->all(), $id);
 
-        Flash::success('Cargo updated successfully.');
+        Flash::success('Cargo actualizado satisfactoriamente.');
 
         return redirect(route('cargos.index'));
     }
@@ -142,14 +142,14 @@ class CargoController extends AppBaseController
         $cargo = $this->cargoRepository->find($id);
 
         if (empty($cargo)) {
-            Flash::error('Cargo not found');
+            Flash::error('Cargo noo encontrado');
 
             return redirect(route('cargos.index'));
         }
 
         $this->cargoRepository->delete($id);
 
-        Flash::success('Cargo deleted successfully.');
+        Flash::success('Cargo eliminado satisfactoriamente.');
 
         return redirect(route('cargos.index'));
     }

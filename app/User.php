@@ -70,7 +70,14 @@ class User extends Authenticatable
      */
     public static $rules = [
         'name' => 'required',
-        'email' => 'required'
+        'email' => 'required|unique:users|email'
+    ];
+
+    public static $messages = [
+        'name.required' => 'Ingresa el nombre',
+        'email.required' => 'Ingresa el correo electrónico',
+        'email.unique' => 'El correo electrónico ingrasado ya existe',
+        'email.email' => 'El correo electrónico ingresado no es válido'
     ];
 
     /**

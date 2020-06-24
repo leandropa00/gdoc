@@ -10,6 +10,7 @@
 
     {{-- <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"> --}}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('css/bootstrap-select.css')}}" />
     <link rel="stylesheet" href="{{asset('css/bootstrap-toggle.min.css')}}">
 
     <!-- Font Awesome -->
@@ -69,7 +70,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Perfil</a>
+                                        <a href="{{route('users.edit', [Auth::user()->id])}}" class="btn btn-default btn-flat">Perfil</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="{{ url('/logout') }}" class="btn btn-default btn-flat"
@@ -150,6 +151,7 @@
 
     <!-- jQuery 3.1.1 -->
     <script src="{{asset('js/jquery.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap-select.min.js')}}"></script>
     <script src="{{asset('js/moment.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/bootstrap-datetimepicker.min.js')}}"></script>

@@ -2,9 +2,7 @@
 
 @section('content')
     <section class="content-header">
-        <h1>
-            Cargo
-        </h1>
+        <h1 class="pull-left"><img src="{{asset('images/logos/logoPng.png')}}" height="40px"> Editando un cargo</h1>
    </section>
    <div class="content">
        @include('adminlte-templates::common.errors')

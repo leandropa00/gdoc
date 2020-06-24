@@ -19,15 +19,13 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->middleware('verified');
-
-
-
-
-
-
-
+Route::get('/inicio', 'HomeController@index')->middleware('verified')->name('inicio');
 
 Route::resource('users', 'UserController');
 
 Route::resource('cargos', 'CargoController');
+
+Route::group(['prefix' => 'inventario'], function () {
+    Route::resource('categoriaProductos', 'CategoriaProductoController');
+    Route::resource('productos', 'ProductoController');
+});

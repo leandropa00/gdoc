@@ -15,7 +15,7 @@ class ModulosTableSeeder extends Seeder
 
         DB::insert('insert into modulos (nombre) values (?)', ['usuarios']);
         DB::insert('insert into modulos (nombre) values (?)', ['modulos']);
-        DB::insert('insert into modulos (nombre) values (?)', ['tipos_documentos']);
-        DB::insert('insert into modulos (nombre) values (?)', ['cargos']);
+        DB::insert('insert into modulos (nombre) values (?)', ['categorias_productos']);
+        DB::insert('insert into modulos (nombre) values (?)', ['productos']);
     }
 }

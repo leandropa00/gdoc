@@ -32,6 +32,7 @@
         <!-- Sidebar Menu -->
 
         <ul class="sidebar-menu" data-widget="tree">
+            <hr>
             @include('layouts.menu')
         </ul>
         <!-- /.sidebar-menu -->
