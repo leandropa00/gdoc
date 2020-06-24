@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use App\Models\Cargo;
 /**
  * Class User
  * @package App\Models
@@ -36,7 +36,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'cargo_id'
+        'name', 'email', 'password'
     ];
 
     /**
@@ -78,6 +78,6 @@ class User extends Authenticatable
      **/
     public function cargos()
     {
-        return $this->hasMany(\App\Models\Cargo::class, 'cargo_id', 'id');
+        return $this->belongsToMany(Cargo::class, 'cargos_usuarios', 'usuario_id', 'cargo_id');
     }
 }

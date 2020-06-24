@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use App\User;
 /**
  * Class Cargo
  * @package App\Models
@@ -18,10 +18,7 @@ class Cargo extends Model
 
     public $table = 'cargos';
     
-
     protected $dates = ['deleted_at'];
-
-
 
     public $fillable = [
         'nombre'
@@ -46,5 +43,11 @@ class Cargo extends Model
         'nombre' => 'required'
     ];
 
-    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function usuarios()
+    {
+        return $this->belongsToMany(User::class, 'cargos_usuarios', 'cargo_id', 'usuario_id');
+    }
 }

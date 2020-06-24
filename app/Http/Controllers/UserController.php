@@ -57,6 +57,7 @@ class UserController extends AppBaseController
     {
         $input = $request->all() + ['password' => Hash::make('12345678')];
         $user = $this->userRepository->create($input);
+        $user->cargos()->attach($request->cargo_id);
         Flash::success('User saved successfully.');
 
         return redirect(route('users.index'));
