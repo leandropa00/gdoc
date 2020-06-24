@@ -1,5 +1,9 @@
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{asset('DataTables/datatables.min.css')}}"/>  
+@endsection
+
 <div class="table-responsive">
-    <table class="table" id="productos-table">
+    <table class="table table-striped table-bordered" id="productos-table">
         <thead>
             <tr>
                 <th>#</th>
@@ -8,7 +12,7 @@
                 <th>Modelo</th>
                 <th>Serie</th>
                 <th>Cantidad</th>
-                <th>Fecha Ingreso</th>
+                <th>Fecha ingreso</th>
                 <th>Categoría</th>
                 <th>Acción</th>
             </tr>
@@ -42,3 +46,14 @@
         </tbody>
     </table>
 </div>
+
+@push('scripts')
+    <script type="text/javascript" src="{{asset('DataTables/datatables.min.js')}}"></script>
+    <script>
+        $('#productos-table').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+            },
+        });
+    </script>
+@endpush

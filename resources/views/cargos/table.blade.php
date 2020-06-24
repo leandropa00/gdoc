@@ -1,5 +1,9 @@
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{asset('DataTables/datatables.min.css')}}"/>  
+@endsection
+
 <div class="table-responsive">
-    <table class="table" id="cargos-table">
+    <table class="table table-striped table-bordered" id="cargos-table">
         <thead>
             <tr>
                 <th>#</th>
@@ -30,3 +34,14 @@
         </tbody>
     </table>
 </div>
+
+@push('scripts')
+    <script type="text/javascript" src="{{asset('DataTables/datatables.min.js')}}"></script>
+    <script>
+        $('#cargos-table').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+            },
+        });
+    </script>
+@endpush
