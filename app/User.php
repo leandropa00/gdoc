@@ -5,10 +5,30 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Eloquent as Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * Class User
+ * @package App\Models
+ * @version June 23, 2020, 9:28 pm -05
+ *
+ * @property \Illuminate\Database\Eloquent\Collection $cargos
+ * @property string $name
+ * @property string $email
+ * @property string $email_verified_at
+ * @property string $password
+ * @property string $remember_token
+ * @property integer $cargo_id
+ */
 class User extends Authenticatable
 {
+    use SoftDeletes;
     use Notifiable;
+
+    public $table = 'users';
+    
+    protected $dates = ['deleted_at'];
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +36,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'cargo_id'
     ];
 
     /**
@@ -29,11 +49,35 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast to native types.
+     * The attributes that should be casted to native types.
      *
      * @var array
      */
     protected $casts = [
+        'id' => 'integer',
+        'name' => 'string',
+        'email' => 'string',
+        'password' => 'string',
+        'remember_token' => 'string',
         'email_verified_at' => 'datetime',
+        'cargo_id' => 'integer'
     ];
+
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public static $rules = [
+        'name' => 'required',
+        'email' => 'required'
+    ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function cargos()
+    {
+        return $this->hasMany(\App\Models\Cargo::class, 'cargo_id', 'id');
+    }
 }

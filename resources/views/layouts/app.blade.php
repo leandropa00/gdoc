@@ -8,8 +8,8 @@
     {{-- Logo --}}
     <link href="{{asset('images/logos/logoPng.png')}}" rel="SHORTCUT ICON">
 
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"> --}}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('css/bootstrap-toggle.min.css')}}">
 
     <!-- Font Awesome -->

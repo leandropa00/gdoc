@@ -1,0 +1,76 @@
+[
+    {
+        "name": "id",
+        "dbType": "increments",
+        "htmlType": "",
+        "validations": "",
+        "searchable": false,
+        "fillable": false,
+        "primary": true,
+        "inForm": false,
+        "inIndex": false,
+        "inView": false
+    },
+    {
+        "name": "name",
+        "dbType": "string,255",
+        "htmlType": "text",
+        "validations": "required"
+    },
+    {
+        "name": "email",
+        "dbType": "string,255",
+        "htmlType": "email",
+        "validations": "required"
+    },
+    {
+        "name": "email_verified_at",
+        "dbType": "timestamp",
+        "htmlType": "date",
+        "inForm": false,
+        "inIndex": false,
+        "inView": false
+    },
+    {
+        "name": "password",
+        "dbType": "string,255",
+        "inForm": false,
+        "inIndex": false,
+        "inView": false
+    },
+    {
+        "name": "remember_token",
+        "dbType": "string,100",
+        "inForm": false,
+        "inIndex": false,
+        "inView": false
+    },
+    {
+        "name": "cargo_id",
+        "dbType": "integer:unsigned:nullable:foreign,cargos,id",
+        "htmlType": "selectTable:cargos:nombre,id",
+        "relation": "1tm,Cargo,cargo_id,id"
+    },
+    {
+        "name": "created_at",
+        "dbType": "timestamp",
+        "htmlType": "",
+        "validations": "",
+        "searchable": false,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false
+    },
+    {
+        "name": "updated_at",
+        "dbType": "timestamp",
+        "htmlType": "",
+        "validations": "",
+        "searchable": false,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false
+    }
+]
