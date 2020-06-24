@@ -9,7 +9,7 @@
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row">
-                    {!! Form::open(['route' => 'productos.store']) !!}
+                    {!! Form::open(['route' => 'productos.store', 'files'=>true]) !!}
 
                         @include('productos.fields')
 

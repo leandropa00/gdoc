@@ -57,10 +57,29 @@ class ProductoController extends AppBaseController
         $input = $request->all();
 
         $producto = $this->productoRepository->create($input);
+        
+        if($request->hasFile('foto_factura')){
+            $ruta = "/images/productos/{$producto->id}/factura";
+            $file = $request->file('foto_factura');
+            $nombre_factura = $file->getClientOriginalName();
+            $file->move(public_path().$ruta, $nombre_factura);
+            $producto->update(['foto_factura'=>$nombre_factura]);
+        }
+
+        if($request->hasFile('foto_manual')){
+            $ruta = "/images/productos/{$producto->id}/manual";
+            $file = $request->file('foto_manual');
+            $nombre_manual = $file->getClientOriginalName();
+            $file->move(public_path().$ruta, $nombre_manual);   
+            $producto->update(['foto_manual'=>$nombre_manual]);
+        }
+        
+        
 
         Flash::success('Producto guardado satisfactoriamente.');
 
         return redirect(route('productos.index'));
+
     }
 
     /**
@@ -115,17 +134,31 @@ class ProductoController extends AppBaseController
     {
         $producto = $this->productoRepository->find($id);
 
-        if(!$request->foto_factura)
-            unset($request['foto_factura']);
-
-        if(!$request->foto_manual)
-            unset($request['foto_manual']);
-
         if (empty($producto)) {
             Flash::error('Producto no encontrado');
             return redirect(route('productos.index'));
         }
 
+        if($request->hasFile('foto_factura')){
+            $ruta = "/images/productos/{$producto->id}/factura";
+            $file = $request->file('foto_factura');
+            $nombre_factura = $file->getClientOriginalName();
+            $file->move(public_path().$ruta, $nombre_factura);
+            $producto->update(['foto_factura'=>$nombre_factura]);
+        }else{
+            unset($request['foto_factura']);
+        }
+
+        if($request->hasFile('foto_manual')){
+            $ruta = "/images/productos/{$producto->id}/manual";
+            $file = $request->file('foto_manual');
+            $nombre_manual = $file->getClientOriginalName();
+            $file->move(public_path().$ruta, $nombre_manual);   
+            $producto->update(['foto_manual'=>$nombre_manual]);
+        }else {
+            unset($request['foto_manual']);
+        }
+        
         $producto = $this->productoRepository->update($request->all(), $id);
 
         Flash::success('Producto actualizado satisfactoriamente.');
