@@ -27,4 +27,9 @@ class CreateProductoRequest extends FormRequest
     {
         return Producto::$rules;
     }
+    
+    public function messages()
+    {
+        return Producto::$messages;
+    }
 }

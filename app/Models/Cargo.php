@@ -43,6 +43,10 @@ class Cargo extends Model
         'nombre' => 'required'
     ];
 
+    public static $messages = [
+        'nombre.required' => 'Ingresa el nombre'
+    ];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/

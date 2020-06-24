@@ -27,4 +27,9 @@ class CreateCargoRequest extends FormRequest
     {
         return Cargo::$rules;
     }
+
+    public function messages()
+    {
+        return Cargo::$messages;
+    }
 }

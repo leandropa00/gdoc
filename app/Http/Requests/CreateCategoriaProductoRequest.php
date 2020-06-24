@@ -27,4 +27,9 @@ class CreateCategoriaProductoRequest extends FormRequest
     {
         return CategoriaProducto::$rules;
     }
+
+    public function messages()
+    {
+        return CategoriaProducto::$messages;
+    }
 }

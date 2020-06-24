@@ -47,5 +47,8 @@ class CategoriaProducto extends Model
         'descripcion' => 'required'
     ];
 
-    
+    public static $messages = [
+        'nombre.required' => 'Ingresa el nombre',
+        'descripcion.required' => 'Ingresa la descripción'
+    ];    
 }

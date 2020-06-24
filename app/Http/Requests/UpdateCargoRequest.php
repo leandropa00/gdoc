@@ -25,8 +25,11 @@ class UpdateCargoRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = Cargo::$rules;
-        
-        return $rules;
+        return Cargo::$rules;
+    }
+
+    public function messages()
+    {
+        return Cargo::$messages;
     }
 }

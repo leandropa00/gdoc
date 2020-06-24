@@ -25,8 +25,11 @@ class UpdateCategoriaProductoRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = CategoriaProducto::$rules;
-        
-        return $rules;
+        return CategoriaProducto::$rules;
+    }
+
+    public function messages()
+    {
+        return CategoriaProducto::$messages;
     }
 }

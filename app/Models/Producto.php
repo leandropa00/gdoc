@@ -65,10 +65,23 @@ class Producto extends Model
         'marca' => 'required',
         'modelo' => 'required',
         'serie' => 'required',
-        'cantidad' => 'required',
-        'fecha_ingreso' => 'required'
+        'cantidad' => 'required|numeric',
+        'fecha_ingreso' => 'required|date',
+        'categoria_id' => 'required'
     ];
 
+    public static $messages = [
+        'nombre.required' => 'Ingresa el nombre',
+        'marca.required' => 'Ingresa la marca',
+        'modelo.required' => 'Ingresa el modelo',
+        'serie.required' => 'Ingresa la serie',
+        'cantidad.required' => 'Ingresa la cantidad',
+        'cantidad.numeric' => 'La cantidad debe ser numérica',
+        'fecha_ingreso.required' => 'Ingresa la fecha',
+        'fecha_ingreso.date' => 'La fecha ingresada es inválida',
+        'categoria_id.required' => 'Selecciona una categoría',
+    ];
+    
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/

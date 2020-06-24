@@ -47,16 +47,22 @@
 <!-- Categoria Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('categoria_id', 'Categoría:') !!}
-    {!! Form::select('categoria_id', $categoria_productoItems, null, ['class' => 'form-control']) !!}
+    {!! Form::select('categoria_id', $categoria_productoItems, null, ['class' => 'form-control', 'data-live-search' => 'true', 'title' => 'Selecciona una categoría', 'data-style' => 'form-control']) !!}
 </div>
 
-<!-- Categoria Id Field -->
+@push('scripts')
+    <script type="text/javascript">
+        $('select').selectpicker();
+    </script>
+@endpush
+
+<!-- Factura Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('foto_factura', 'Factura de compra:') !!}
     {!! Form::file('foto_factura', $categoria_productoItems, null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Categoria Id Field -->
+<!-- Manual Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('foto_manual', 'Manual de uso:') !!}
     {!! Form::file('foto_manual', $categoria_productoItems, null, ['class' => 'form-control']) !!}
